@@ -4,6 +4,6 @@ source "http://rubygems.org"
 gemspec
 
 group :test do
-  gem 'rails', '3.0.1'
+  #gem 'rails', '3.0.1'
   gem 'rspec'
 end
