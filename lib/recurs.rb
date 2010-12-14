@@ -4,7 +4,6 @@ require 'recurs/rules'
 require 'ri_cal'
 module Recurs
   include RiCal
-  # Your code goes here...
 
   module Parser
 
@@ -12,8 +11,6 @@ module Recurs
       base.send :extend, ClassMethods
     end
 
-    # class << self is NOT the same as including ( seen above ) which makes methods available to CLASSES that include the module
-    #, it ONLY makes the methods available to the MODULE itself
     class << self
       def rrule(repeats=nil, args={})
         args[:rule] = 'r'

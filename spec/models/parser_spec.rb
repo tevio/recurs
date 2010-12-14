@@ -110,23 +110,3 @@ describe Recurs::Parser do
  end  
   
 end
-
-
-=begin
-# A recurrence instance should implement a couple of attributes ( recurs, rrules, rdates, exrules )
-
-Recurs::Parser.recurs is a composite method combining all rrules and exrules
-Recurs::Parser.rrules is an array of rrules similarly exrules is the same
-
-  it "instance should respond to instance methods:" do
-    Recurs::Parser = Parser.new
-    Recurs::Parser.recurs
-    Recurs::Parser.rrules
-  end
-
-# The Parser Class should implement singular versions ( rrule, exrule ), these methods generate atomic rules
-
-The Parser class implements the rrule and exrule methods => alias_method_chain perhaps
-( these are actually just aliases of the same method but with predefined flags )
-
-=end

@@ -12,10 +12,6 @@ describe Event do
   end
 
   it "should act as recurring" do
-    #@event.rrules
-    #@event.exrules
-    #@event.rdates
-    #@event.exdates
     @event.recurs
   end
 
@@ -60,26 +56,4 @@ describe Event do
   it "should add a list of exdates" do
     @event.add_exdate(:dates => [Date.today, (Date.today+2)]).should == "EXDATE:#{RiCal::FastDateTime.from_date_time(Date.today.to_datetime).ical_str},#{RiCal::FastDateTime.from_date_time((Date.today+2).to_datetime).ical_str}"
   end
-
-
 end
-
-=begin
-  An event has recurrence
-
-  @event.recurs #"DTSTART;TZID=US-Eastern:19970902T0900
-                  RRULE:FREQ=DAILY;COUNT=10
-                  EXRULE:"
-
-TODO: Ascertain how ri_cal parses complex rules
-
-While building the recurrence the event must use private instance attributes from the recurrrence module:
-
-The recurrence module must be mixed into the model transparently, either by using an acts_as
-or by inheriting from the module
-
-class Event < AR
-acts_as_recurring_event
-end
-
-=end
