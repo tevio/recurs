@@ -6,11 +6,11 @@ Gem::Specification.new do |s|
   s.name        = "recurs"
   s.version     = Recurs::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["Steve Caney Martin"]
+  s.email       = ["steve@shakewell.co.uk"]
   s.homepage    = "http://rubygems.org/gems/recurs"
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{A recurrence generator for ical format}
+  s.description = %q{Specifiy you're recurrence pattern in symbols and strings and get an ical format recurrence string}
 
   s.rubyforge_project = "recurs"
   s.add_dependency('ri_cal', '>= 0.8.7')
