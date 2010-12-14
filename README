@@ -1,10 +1,13 @@
+NOTE: The RiCal library provides a really good implementation of rrule (RecurrenceRules): http://rubydoc.info/gems/ri_cal/0.8.7/RiCal/PropertyValue/RecurrenceRule
+but it doesn't seem to support exrules, rdates, or exdates.
+
 #  Recurs
 Is a small Recurring Event parsing library. It will take symbolized input and output icalendar standard recurring events,
 see the specs for examples of the api
 
 This gem has been tested as a standalone in ruby 1.9, or using Rails 3
 
-It also allows the developer to specifiy specialized Recurrence schemes by using the power of Ruby closures
+It also allows the developer to specifiy specialized Recurrence schemes by using Ruby closures
 
 ##  Rails (ActiveRecord)
 

@@ -24,10 +24,16 @@ describe Event do
     @event.recurs.should == "RRULE:FREQ=DAILY"
   end
 
-    it "should add an exrule" do
+  it "should add an exrule" do
     @event.add_exrule(:daily).should == "EXRULE:FREQ=DAILY"
     @event.recurs.should == "EXRULE:FREQ=DAILY"
-    end
+  end
+
+  it "should render a correct ical string" do
+    @event.add_rrule(:daily).should == "RRULE:FREQ=DAILY"
+    @event.add_exrule(:daily).should == "EXRULE:FREQ=DAILY"
+    @event.recurs.should == "RRULE:FREQ=DAILY\nEXRULE:FREQ=DAILY"
+  end
 
   it "should add an rdate" do
     @event.add_rdate(Date.today).should == "RDATE:#{RiCal::FastDateTime.from_date_time(Date.today.to_datetime).ical_str}"
@@ -42,6 +48,14 @@ describe Event do
   it "should add an exdate" do
     @event.add_exdate(Date.today).should == "EXDATE:#{RiCal::FastDateTime.from_date_time(Date.today.to_datetime).ical_str}"
   end
+
+  it "should add an exdate range" do
+    @event.add_exdate(:period => [Date.today, (Date.today+2)]).should == "EXDATE;VALUE=PERIOD:#{RiCal::FastDateTime.from_date_time(Date.today.to_datetime).ical_str}/#{RiCal::FastDateTime.from_date_time((Date.today+2).to_datetime).ical_str}"
+  end
+  it "should add a list of exdates" do
+    @event.add_exdate(:dates => [Date.today, (Date.today+2)]).should == "EXDATE:#{RiCal::FastDateTime.from_date_time(Date.today.to_datetime).ical_str},#{RiCal::FastDateTime.from_date_time((Date.today+2).to_datetime).ical_str}"
+  end
+
 
 end
 

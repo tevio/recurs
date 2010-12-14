@@ -206,7 +206,11 @@ module Recurs
         r.concat @exrules
         r.concat @rdates
         r.concat @exdates
-        r.join
+        b = []
+        l = r.length
+        n = 1
+        r.each {|i| i += "\n" if n < l; b << i; n += 1}
+        b.join
       end
 
       def add_rrule(repeats, args = {})
