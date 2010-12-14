@@ -1,5 +1,13 @@
-Recurs is a small Recurring Event parsing library. It will take symbolized input and output icalendar standard recurring events
+#  Recurs
+Is a small Recurring Event parsing library. It will take symbolized input and output icalendar standard recurring events,
+see the specs for examples of the api
 
 This gem has been tested as a standalone in ruby 1.9, or using Rails 3
 
 It also allows the developer to specifiy specialized Recurrence schemes by using the power of Ruby closures
+
+#  Rails (ActiveRecord)
+
+    class Event < AR
+        acts_as_recurring
+    end
