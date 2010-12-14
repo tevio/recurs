@@ -15,6 +15,11 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "recurs"
   s.add_dependency('ri_cal', '>= 0.8.7')
 
+  s.add_development_dependency 'rspec', '~> 2.3.0'
+  s.add_development_dependency 'aruba', '~> 0.2.7'
+  s.add_development_dependency('rake')
+  s.add_development_dependency('cucumber')
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

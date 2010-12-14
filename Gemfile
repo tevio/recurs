@@ -6,4 +6,5 @@ gemspec
 group :test do
   #gem 'rails', '3.0.1'
   gem 'rspec'
+  gem 'aruba'
 end

@@ -3,13 +3,6 @@ module Recurs
   mattr_accessor :repeat_procs, :schema
   @@repeat_procs = {
 
-=begin
-    'Daily' => ->(args = {}){
-        args[:repeats] = 'DAILY'
-        rrule(args);
-    }, # 0
-=end
-
 #=begin
     'Daily' => ->(set=false, args = {}){
       unless set
