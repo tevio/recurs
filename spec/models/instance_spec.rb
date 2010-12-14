@@ -24,6 +24,11 @@ describe Event do
     @event.recurs.should == "RRULE:FREQ=DAILY"
   end
 
+  it "should add a non specific rule" do
+    @event.add_rule(:daily).should == ":FREQ=DAILY"
+    @event.recurs.should == ":FREQ=DAILY"
+  end
+
   it "should add an exrule" do
     @event.add_exrule(:daily).should == "EXRULE:FREQ=DAILY"
     @event.recurs.should == "EXRULE:FREQ=DAILY"

@@ -16,12 +16,17 @@ module Recurs
     #, it ONLY makes the methods available to the MODULE itself
     class << self
       def rrule(repeats=nil, args={})
-        args[:rule] = :r
+        args[:rule] = 'r'
         rule(repeats, args)
       end
 
       def exrule(repeats=nil, args={})
-        args[:rule] = :e
+        args[:rule] = 'e'
+        rule(repeats, args)
+      end
+
+      def nrule(repeats=nil, args={})
+        #args[:rule] = 'e'
         rule(repeats, args)
       end
 
@@ -67,8 +72,7 @@ module Recurs
         r
       end
 
-      protected
-      @@rule = nil
+
 
         # The BYSECOND attr could be eg: 14 or multiple: 14, 45 between 0 and 59 ( i assume )
         # The BYMINUTE attr could be eg: 14 or multiple: 14, 45 between 0 and 59 ( i assume )
@@ -82,7 +86,9 @@ module Recurs
 
 
       def rule(repeats, args = {})
-        args[:rule] == :r ? @@rule = "RRULE" : @@rule = "EXRULE"
+        @@rule = ""
+        @@rule = "RRULE" if (args[:rule] == 'r')
+        @@rule = "EXRULE" if (args[:rule] == 'e')
         @@rule += ":FREQ=#{repeats.to_s.upcase}"
         interval(args)
         args.each { |ar|
@@ -95,6 +101,9 @@ module Recurs
         ending(args)
         @@rule
       end
+
+      protected
+
 
       def by_unit(measure, units)
         ms       = {:by_second    => [60, get_num, BY_N_SECONDS],
@@ -211,6 +220,12 @@ module Recurs
         n = 1
         r.each {|i| i += "\n" if n < l; b << i; n += 1}
         b.join
+      end
+
+      def add_rule(repeats, args = {})
+        arule = Parser.rule(repeats, args)
+        @rrules << arule
+        arule
       end
 
       def add_rrule(repeats, args = {})

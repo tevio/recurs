@@ -24,6 +24,10 @@ describe Recurs::Parser do
     Recurs::Parser.rrule(:daily).should == "RRULE:FREQ=DAILY"
   end
 
+  it "should swicth off rule type" do
+    Recurs::Parser.rule(:daily).should == ":FREQ=DAILY"
+  end
+
  it "should create a daily recurrence with a two day interval" do
    Recurs::Parser.rrule(:daily, :interval => 2).should == "RRULE:FREQ=DAILY;INTERVAL=2"
    Recurs::Parser.rrule(:daily, :repeats_every => 2).should == "RRULE:FREQ=DAILY;INTERVAL=2"
