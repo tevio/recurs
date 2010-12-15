@@ -5,6 +5,8 @@ Feature:
 
   Scenario: The recurs generators create a recurs scaffold
     for each model that I generate with a recurs generator
+    #Given I run "rake build"
+    #And I run "gem install pkg/recurs-0.0.4.2.gem"
     Given I run "rails new test_app"
     And I cd to "test_app"
     And a file named "Gemfile" with:
@@ -14,7 +16,7 @@ Feature:
     gem 'sqlite3-ruby', :require => 'sqlite3'
     gem 'recurs' #, :path => '../../../'
     """
-    And I run "bundle install"
+    #And I run "bundle install"
     And I run "rails generate recurs_widget Event"
     Then the output should contain:
       """

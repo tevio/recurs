@@ -1,10 +1,10 @@
-module Recurs
-class WidgetGenerator < Rails::Generators::Base
+#module
+class RecursWidgetGenerator < Rails::Generators::Base
   source_root File.expand_path("../templates", __FILE__)
   argument :name, :type => :string, :default => "event"
 
   def create_instance_model
-    template "instance.rb.tmpl", "app/models/#{name}.rb"
+    template "instance.rb.tmpl", "app/models/#{name.downcase}.rb"
     #create_file "app/models#{model_name}"
   end
 
@@ -23,4 +23,4 @@ class WidgetGenerator < Rails::Generators::Base
   end
 
 end
-end
+#end
