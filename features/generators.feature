@@ -12,16 +12,21 @@ Feature:
     source "http://rubygems.org"
     gem 'rails', '3.0.0'
     gem 'sqlite3-ruby', :require => 'sqlite3'
-    gem 'recurs', :path => '../../../'
+    gem 'recurs' #, :path => '../../../'
     """
     And I run "bundle install"
     And I run "rails generate recurs_widget Event"
-    And I run "rake db:migrate"
+    Then the output should contain:
+      """
+        create  app/models/event.rb
+
+      """
     And the following files should exist:
       | app/models/event.rb |
       | app/views/events/index.html.haml |
       | app/views/events/new.html.haml |
       | app/views/events/edit.html.haml |
       | app/views/events/_form.html.haml |
+      | app/views/events/schemes/_form.html.haml |
     And the following files should not exist:
-      | test/fixtures/users.yml |
+    And I run "rake db:migrate"
