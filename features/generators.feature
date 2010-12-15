@@ -18,17 +18,20 @@ Feature:
     """
     #And I run "bundle install"
     And I run "rails generate recurs_widget Event"
-    Then the output should contain:
-      """
-        create  app/models/event.rb
-
-      """
+    #Then the output should contain:
+    #  """
+    #    create  app/models/event.rb
+    #
+    #  """
     And the following files should exist:
       | app/models/event.rb |
       | app/views/events/index.html.haml |
       | app/views/events/new.html.haml |
       | app/views/events/edit.html.haml |
       | app/views/events/_form.html.haml |
-      | app/views/events/schemes/_form.html.haml |
-    And the following files should not exist:
-    And I run "rake db:migrate"
+      | app/views/events/schemes/_monthly.html.haml |
+      | app/views/events/schemes/_set_points.html.haml |
+      | app/views/events/schemes/_standard.html.haml |
+      | app/views/events/schemes/_weekly.html.haml |
+    #And the following files should not exist:
+    #And I run "rake db:migrate"

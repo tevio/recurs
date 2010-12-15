@@ -12,6 +12,9 @@ class RecursWidgetGenerator < Rails::Generators::Base
     ['index', 'show', 'edit', 'new', '_form'].each {|v|
     template "views/#{v}", "app/views/#{name.downcase.pluralize}/#{v}.html.haml"
     }
+    ['_monthly', '_set_points', '_standard', '_weekly'].each {|v|
+    template "views/schemes/#{v}", "app/views/#{name.downcase.pluralize}/#{v}.html.haml"
+    }
   end
 
   def create_instance_route
