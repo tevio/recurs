@@ -10,7 +10,7 @@ class RecursWidgetGenerator < Rails::Generators::Base
 
   def create_instance_views
     ['index', 'show', 'edit', 'new', '_form'].each {|v|
-    template "views/#{v}", "app/views/#{name.downcase}/#{v}.html.haml"
+    template "views/#{v}", "app/views/#{name.downcase.pluralize}/#{v}.html.haml"
     }
   end
 
