@@ -15,7 +15,7 @@ class RecursWidgetGenerator < Rails::Generators::Base
   end
 
   def create_instance_route
-    insert_into_file 'config/routes.rb'
+    #insert_into_file 'config/routes.rb'
   end
 
   def create_instance_controller
