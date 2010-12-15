@@ -13,7 +13,7 @@ class RecursWidgetGenerator < Rails::Generators::Base
     template "views/#{v}", "app/views/#{name.downcase.pluralize}/#{v}.html.haml"
     }
     ['_monthly', '_set_points', '_standard', '_weekly'].each {|v|
-    template "views/schemes/#{v}", "app/views/#{name.downcase.pluralize}/#{v}.html.haml"
+    template "views/schemes/#{v}", "app/views/#{name.downcase.pluralize}/schemes/#{v}.html.haml"
     }
   end
 
