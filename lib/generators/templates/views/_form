@@ -1,5 +1,4 @@
-<% dname = name.downcase %>
-= form_for @<%= dname %> do |f|
+= form_for @<%= dname = name.downcase %> do |f|
   -if @<%= dname %>.errors.any?
     #errorExplanation
       %h2= "#{pluralize(@<%= dname %>.errors.count, "error")} prohibited this recurrence from being saved:"
