@@ -8,7 +8,7 @@ module Recurs
   module Parser
 
     def self.included(base)
-      base.send :extend, ClassMethods
+      base.send :extend, ModelMethods
     end
 
     class << self
@@ -192,9 +192,17 @@ module Recurs
 
     end
 
-    module ClassMethods
+    module ModelMethods
       def acts_as_recurring
         send :include, InstanceMethods
+        send :extend, ModelClassMethods
+      end
+
+    end
+
+    module ModelClassMethods
+      def schemes
+        Recurs::Rules.schemes
       end
     end
 

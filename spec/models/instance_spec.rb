@@ -15,6 +15,18 @@ describe Event do
     @event.recurs
   end
 
+  it "should have the schemes" do
+    Event.schemes.should == ["Daily",
+      "Every Weekday ( Mon - Fri )",
+      "Every Mon, Wed, Fri",
+      "Every Tues, Thurs",
+      "Every Weekend",
+      "Weekly",
+      "Monthly",
+      "Yearly"]
+
+  end
+
   it "should add an rrule" do
     @event.add_rrule(:daily).should == "RRULE:FREQ=DAILY"
     @event.recurs.should == "RRULE:FREQ=DAILY"

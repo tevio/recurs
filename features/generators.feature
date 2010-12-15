@@ -33,5 +33,49 @@ Feature:
       | app/views/events/schemes/_set_points.html.haml |
       | app/views/events/schemes/_standard.html.haml |
       | app/views/events/schemes/_weekly.html.haml |
+    And the file "app/models/event.rb" should contain exactly:
+  """
+  class Event < ActiveRecord::Base
+    acts_as_recurring
+  end
+  """
+    And the file "app/views/events/_form.html.haml" should contain exactly:
+"""
+= form_for @event do |f|
+  -if @event.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this recurrence from being saved:"
+      %ul
+        - @event.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+  .field
+    = f.label :repeats
+    = f.select :repeats, Event.schemes
+
+  - if flash[:interval]
+    .field
+      = f.label :repeats_every
+      = f.select :interval, 1..52, :class => :left
+      = @recurs_template[1]
+
+    = render :partial => "recurrences/schemes/#{@recurs_template[0]}"
+
+    .field
+      = f.label :starts_at
+      = f.datetime_select :starts_at
+    .field
+      = f.label :ends_at
+      = f.datetime_select :ends_at
+    .field
+      = f.label :never_ends
+      = f.check_box :never_ends
+    .field
+      = f.label :summary
+      = f.text_field :summary
+  .actions
+    = f.submit 'Save'
+"""
     #And the following files should not exist:
     #And I run "rake db:migrate"
