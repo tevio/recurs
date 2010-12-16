@@ -1,24 +1,24 @@
 %h1 Listing <%= dname = name.downcase %>s
 
 %table
-%tr
-  %th Starts on
-  %th Ends on date
-  %th Recurrence
-  %th Summary
-  %th
-  %th
-  %th
-
-- @<%= dname %>s.each do |<%= dname %>|
   %tr
-    %td= <%= dname %>.starts_at
-    %td= <%= dname %>.ends_at
-    %td= <%= dname %>.rrule
-    %td= <%= dname %>.summary
-    %td= link_to 'Show', <%= dname %>
-    %td= link_to 'Edit', edit_<%= dname %>_path(<%= dname %>)
-    %td= link_to 'Destroy', <%= dname %>, :confirm => 'Are you sure?', :method => :delete
+    %th Starts on
+    %th Ends on date
+    %th Recurrence
+    %th Summary
+    %th
+    %th
+    %th
+
+  - @<%= dname %>s.each do |<%= dname %>|
+    %tr
+      %td= <%= dname %>.starts_at
+      %td= <%= dname %>.ends_at
+      %td= <%= dname %>.rrule
+      %td= <%= dname %>.summary
+      %td= link_to 'Show', <%= dname %>
+      %td= link_to 'Edit', edit_<%= dname %>_path(<%= dname %>)
+      %td= link_to 'Destroy', <%= dname %>, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
