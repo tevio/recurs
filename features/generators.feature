@@ -39,6 +39,19 @@ Feature:
     acts_as_recurring
   end
   """
+
+
+    And the file "app/views/events/new.html.haml" should contain exactly:
+  """
+  %h1 New recurrence
+
+  = render 'form'
+
+  = link_to 'Back', recurrences_path
+  """
+
+
+
     And the file "app/views/events/_form.html.haml" should contain exactly:
   """
   = form_for @event do |f|
@@ -77,5 +90,7 @@ Feature:
     .actions
       = f.submit 'Save'
   """
+
+
     #And the following files should not exist:
     #And I run "rake db:migrate"
