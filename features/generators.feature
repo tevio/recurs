@@ -43,11 +43,11 @@ Feature:
 
     And the file "app/views/events/new.html.haml" should contain exactly:
   """
-  %h1 New recurrence
+  %h1 New event
 
   = render 'form'
 
-  = link_to 'Back', recurrences_path
+  = link_to 'Back', events_path
   """
 
 
