@@ -266,6 +266,11 @@ Then /^the file "([^"]*)" should contain exactly:$/ do |file, exact_content|
   check_exact_file_content(file, exact_content)
 end
 
+Then /^the migration file create_"([^"]*)"s.rb should contain exactly:$/ do |file, exact_content|
+  f = Dir.entries('db/migrate').select {|f| f if f.match(/\n*_create_#{file}s.rb/) }
+  check_exact_file_content(f, exact_content)
+end
+
 Then /^the file "([^"]*)" should match \/([^\/]*)\/$/ do |file, partial_content|
   check_file_content(file, /#{partial_content}/, true)
 end
