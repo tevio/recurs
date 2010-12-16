@@ -1,6 +1,6 @@
 class Create<%= name.camelize %>s < ActiveRecord::Migration
   def self.up
-    create_table(:<%= name %>s) do |t|
+    create_table(:<%= name.downcase %>s) do |t|
 <% if attributes %>
 <% for attribute in attributes -%>
       t.<%= attribute[:type] %> :<%= attribute[:name] %>
@@ -12,6 +12,6 @@ class Create<%= name.camelize %>s < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :<%= name %>s
+    drop_table :<%= name.downcase %>s
   end
 end
