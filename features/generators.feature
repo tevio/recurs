@@ -215,5 +215,6 @@ Feature:
     end
   end
   """
+    And the file "config/routes.rb" should contain "resources :events"
     #And the following files should not exist:
     #And I run "rake db:migrate"
