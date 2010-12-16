@@ -1,0 +1,19 @@
+class Create<%= name.camelize %>s < ActiveRecord::Migration
+  def self.up
+    create_table(:<%= name %>s) do |t|
+
+<% if attributes %>
+<% for attribute in attributes -%>
+      t.<%= attribute[:type] %> :<%= attribute[:name] %>
+<% end -%>
+<% end -%>
+
+      t.timestamps
+    end
+
+  end
+
+  def self.down
+    drop_table :<%= name %>s
+  end
+end

@@ -18,12 +18,12 @@ Feature:
     """
     #And I run "bundle install"
     And I run "rails generate recurs_widget Event"
-    Then the output should contain:
-      """
-        create  app/models/event.rb
-        create  db/migrate
-
-      """
+    #Then the output should contain:
+    #  """
+    #    create  app/models/event.rb
+    #    create  db/migrate
+    #
+    #  """
     And the following directories should exist:
       | db/migrate |
     And the following files should exist:
@@ -219,13 +219,21 @@ Feature:
   end
   """
     And the file "config/routes.rb" should contain "resources :events"
-    Then the output should contain:
-      """
-
-      """
-    And the migration file create_"event"s.rb should contain exactly:
+    And the file that's name includes "create_events.rb" in "db/migrate" should contain exactly:
   """
+  class CreateEvents < ActiveRecord::Migration
+    def self.up
+      create_table(:events) do |t|
 
+        t.timestamps
+      end
+
+    end
+
+    def self.down
+      drop_table :events
+    end
+  end
   """
     #And the following files should not exist:
     #And I run "rake db:migrate"
