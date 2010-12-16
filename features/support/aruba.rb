@@ -49,6 +49,12 @@ module Aruba
       end
     end
 
+    def check_migration_file_content(file)
+      in_current_dir do
+        f = Dir.entries('db/migrate').select {|f| f if f.match(/\n*_create_#{file}s.rb/) }
+      end
+    end
+
     def check_file_presence(paths, expect_presence)
       prep_for_fs_check do
         paths.each do |path|
