@@ -204,9 +204,14 @@ module Recurs
       def schemes
         Recurs::Rules.schemes
       end
+
+    def indexed_schemes
+      self.schemes.map {|r| [r, self.schemes.find_index(r)]}
+    end
     end
 
     module InstanceMethods
+      attr_accessor :repeats
       def initialize
         @rrules  ||= []
         @exrules ||= []

@@ -13,6 +13,7 @@ describe Event do
 
   it "should act as recurring" do
     @event.recurs
+    @event.repeats
   end
 
   it "should have the schemes" do
@@ -25,6 +26,17 @@ describe Event do
       "Monthly",
       "Yearly"]
 
+  end
+
+  it "should have indexed schemes" do
+    Event.indexed_schemes.should == [["Daily",0],
+      ["Every Weekday ( Mon - Fri )",1],
+      ["Every Mon, Wed, Fri",2],
+      ["Every Tues, Thurs",3],
+      ["Every Weekend",4],
+      ["Weekly",5],
+      ["Monthly",6],
+      ["Yearly",7]]
   end
 
   it "should add an rrule" do
