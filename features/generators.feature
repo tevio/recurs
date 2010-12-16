@@ -18,11 +18,12 @@ Feature:
     """
     #And I run "bundle install"
     And I run "rails generate recurs_widget Event"
-    #Then the output should contain:
-    #  """
-    #    create  app/models/event.rb
-    #
-    #  """
+    Then the output should contain:
+      """
+        create  app/models/event.rb
+        create  db/migrate
+
+      """
     And the following directories should exist:
       | db/migrate |
     And the following files should exist:
