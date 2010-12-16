@@ -1,0 +1,83 @@
+class <%= name %>sController < ApplicationController
+  # GET /<%= dname = name.downcase %>s
+  # GET /<%= dname %>s.xml
+  def index
+    @<%= dname %>s = <%= name %>.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @<%= dname %>s }
+    end
+  end
+
+  # GET /<%= dname %>s/1
+  # GET /<%= dname %>s/1.xml
+  def show
+    @<%= dname %> = <%= name %>.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @<%= dname %> }
+    end
+  end
+
+  # GET /<%= dname %>s/new
+  # GET /<%= dname %>s/new.xml
+  def new
+    @<%= dname %> = <%= name %>.new
+    if flash[:repeats]
+      flash[:scheme] = flash[:repeats]
+      @<%= dname %>_template = <%= name %>.scheme(flash[:repeats]).call
+    end
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @<%= dname %> }
+    end
+  end
+
+  # GET /<%= dname %>s/1/edit
+  def edit
+    @<%= dname %> = <%= name %>.find(params[:id])
+  end
+
+  # POST /<%= dname %>s
+  # POST /<%= dname %>s.xml
+  def create
+    unless flash[:repeats]
+      flash[:repeats] = params[:<%= dname %>][:repeats].to_i
+      redirect_to new_<%= dname %>_path
+    else
+      #@<%= dname %> = <%= name %>.new(params[:<%= dname %>])
+      <%= name %>.scheme(flash[:scheme]).call(:set => params[:<%= dname %>])
+    end
+  end
+
+  # PUT /<%= dname %>s/1
+  # PUT /<%= dname %>s/1.xml
+  def update
+    @<%= dname %> = <%= name %>.find(params[:id])
+
+    respond_to do |format|
+      if @<%= dname %>.update_attributes(params[:<%= dname %>])
+        format.html { redirect_to(@<%= dname %>, :notice => '<%= name %> was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @<%= dname %>.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /<%= dname %>s/1
+  # DELETE /<%= dname %>s/1.xml
+  def destroy
+    @<%= dname %> = <%= name %>.find(params[:id])
+    @<%= dname %>.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(<%= dname %>s_url) }
+      format.xml  { head :ok }
+    end
+  end
+end
