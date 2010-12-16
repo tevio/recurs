@@ -29,8 +29,8 @@ class RecursWidgetGenerator < Rails::Generators::Base
     template "controller.rb.tmpl", "app/controllers/#{name.downcase}s_controller.rb"
   end
 
-  def self.next_migration_number
-    ActiveRecord::Generators::Base.next_migration_number
+  def self.next_migration_number(dirname)
+    ActiveRecord::Generators::Base.next_migration_number(dirname)
   end
 
   def create_migration_file
