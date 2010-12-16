@@ -1,6 +1,6 @@
 #module
 require 'rails/generators/migration'
-require 'actic/lib/generators/actic_generator'
+require 'lib/generators/actic_generator'
 class RecursWidgetGenerator < Rails::Generators::Base
   include Rails::Generators::Migration
   include Actic::Generator
