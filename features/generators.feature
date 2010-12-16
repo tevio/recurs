@@ -102,39 +102,31 @@ Feature:
   """
     And the file "app/views/events/index.html.haml" should contain exactly:
   """
-  %h1 Listing recurrences
+  %h1 Listing events
 
   %table
     %tr
-      %th Repeats
-      %th Repeats every
-      %th Repeats on
-      %th Repeat by
       %th Starts on
       %th Ends on date
-      %th Never ends
+      %th Recurrence
       %th Summary
       %th
       %th
       %th
 
-    - @events.each do |recurrence|
+    - @events.each do |event|
       %tr
-        %td= recurrence.repeats
-        %td= recurrence.repeats_every
-        %td= recurrence.repeats_on
-        %td= recurrence.repeat_by
-        %td= recurrence.starts_at
-        %td= recurrence.ends_at
-        %td= recurrence.never_ends
-        %td= recurrence.summary
-        %td= link_to 'Show', recurrence
-        %td= link_to 'Edit', edit_recurrence_path(recurrence)
-        %td= link_to 'Destroy', recurrence, :confirm => 'Are you sure?', :method => :delete
+        %td= event.starts_at
+        %td= event.ends_at
+        %td= event.rrule
+        %td= event.summary
+        %td= link_to 'Show', event
+        %td= link_to 'Edit', edit_event_path(event)
+        %td= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete
 
   %br
 
-  = link_to 'New recurrence', new_recurrence_path
+  = link_to 'New event', new_event_path
   """
 
     #And the following files should not exist:
