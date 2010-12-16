@@ -1,5 +1,8 @@
 #module
+require 'rails/generators/migration'
 class RecursWidgetGenerator < Rails::Generators::Base
+  include Rails::Generators::Migration
+  include Actic::Generator
   source_root File.expand_path("../templates", __FILE__)
   argument :name, :type => :string, :default => "event"
 

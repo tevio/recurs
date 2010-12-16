@@ -23,6 +23,8 @@ Feature:
     #    create  app/models/event.rb
     #
     #  """
+    And the following directories should exist:
+      | db/migrate |
     And the following files should exist:
       | app/models/event.rb |
       | app/views/events/index.html.haml |
@@ -34,7 +36,6 @@ Feature:
       | app/views/events/schemes/_standard.html.haml |
       | app/views/events/schemes/_weekly.html.haml |
       | app/controllers/events_controller.rb |
-      | db/migrate |
     And the file "app/models/event.rb" should contain exactly:
   """
   class Event < ActiveRecord::Base
