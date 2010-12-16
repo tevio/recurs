@@ -100,7 +100,7 @@ Feature:
   \|
   = link_to 'Back', events_path
   """
-    and the file "app/views/events/index.html.haml" should contain exactly:
+    And the file "app/views/events/index.html.haml" should contain exactly:
   """
   %h1 Listing recurrences
 
