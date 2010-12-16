@@ -10,10 +10,10 @@ class RecursWidgetGenerator < Rails::Generators::Base
 
   def create_instance_views
     ['index', 'show', 'edit', 'new', '_form'].each {|v|
-    template "views/#{v}", "app/views/#{name.downcase.pluralize}/#{v}.html.haml"
+    template "views/#{v}", "app/views/#{name.downcase}s/#{v}.html.haml"
     }
     ['_monthly', '_set_points', '_standard', '_weekly'].each {|v|
-    template "views/schemes/#{v}", "app/views/#{name.downcase.pluralize}/schemes/#{v}.html.haml"
+    template "views/schemes/#{v}", "app/views/#{name.downcase}s/schemes/#{v}.html.haml"
     }
   end
 
@@ -22,7 +22,7 @@ class RecursWidgetGenerator < Rails::Generators::Base
   end
 
   def create_instance_controller
-
+    template "controller.rb.tmpl", "app/controllers/#{name.downcase}s_controller.rb"
   end
 
 end
