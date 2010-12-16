@@ -1,0 +1,7 @@
+%h1 Edit <%= name.downcase %>
+
+= render 'form'
+
+= link_to 'Show', @<%= name.downcase %>
+\|
+= link_to 'Back', <%= name.downcase %>s_path
