@@ -25,5 +25,9 @@ class RecursWidgetGenerator < Rails::Generators::Base
     template "controller.rb.tmpl", "app/controllers/#{name.downcase}s_controller.rb"
   end
 
+    def create_migration_file
+      migration_template 'migration.rb.tmpl', "db/migrate/create_#{name.downcase}s.rb"
+    end
+
 end
 #end

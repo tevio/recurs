@@ -34,6 +34,7 @@ Feature:
       | app/views/events/schemes/_standard.html.haml |
       | app/views/events/schemes/_weekly.html.haml |
       | app/controllers/events_controller.rb |
+      | db/migrate |
     And the file "app/models/event.rb" should contain exactly:
   """
   class Event < ActiveRecord::Base
@@ -216,6 +217,10 @@ Feature:
   end
   """
     And the file "config/routes.rb" should contain "resources :events"
+    Then the output should contain:
+      """
+
+      """
     And the migration file create_"event"s.rb should contain exactly:
   """
 

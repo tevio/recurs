@@ -267,8 +267,10 @@ Then /^the file "([^"]*)" should contain exactly:$/ do |file, exact_content|
 end
 
 Then /^the migration file create_"([^"]*)"s.rb should contain exactly:$/ do |file, exact_content|
-  f = Dir.entries('db/migrate').select {|f| f if f.match(/\n*_create_#{file}s.rb/) }
-  check_exact_file_content("db/migrate#{f}", exact_content)
+  #f = Dir.entries('db/migrate').select {|f| f if f.match(/\n*_create_#{file}s.rb/) }
+  found = Dir.entries("/Users/stevecaney/RubymineProjects/aruba_test_dir")#.select {|f| f if f.match(/\n*_create_#{file}s.rb/) }
+  #check_exact_migration_file_content(file, exact_content)
+  check_exact_file_content("#{current_dir}/db/migrate/#{found}", exact_content)
 end
 
 Then /^the file "([^"]*)" should match \/([^\/]*)\/$/ do |file, partial_content|
