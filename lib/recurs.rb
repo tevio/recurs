@@ -195,6 +195,15 @@ module Recurs
     module ModelMethods
       def acts_as_recurring
         send :include, InstanceMethods
+        if defined? ActiveRecord::Base
+          if self.ancestors.include? ActiveRecord::Base
+            send :include, ARBased
+          else
+            send :include, NonARBased
+          end
+        else
+          send :include, NonARBased
+        end
         send :extend, ModelClassMethods
       end
 
@@ -210,15 +219,29 @@ module Recurs
     end
     end
 
-    module InstanceMethods
-      attr_accessor :repeats, :dtstart, :dtend
-      def initialize
+    module NonARBased
+      def initialize(args ={})
         @rrules  ||= []
         @exrules ||= []
         @rdates  ||= []
         @exdates ||= []
         super
       end
+    end
+
+    module ARBased
+      def after_initialize(args ={})
+        @rrules  ||= []
+        @exrules ||= []
+        @rdates  ||= []
+        @exdates ||= []
+        super
+      end
+    end
+
+    module InstanceMethods
+      attr_accessor :repeats, :dtstart, :dtend
+      #after_initialize :set_attrs
 
       def recurs
         r = @rrules
