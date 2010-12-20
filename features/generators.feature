@@ -111,8 +111,8 @@ Feature:
 
   %table
     %tr
-      %th Starts on
-      %th Ends on date
+      %th Start date
+      %th End date
       %th Recurrence
       %th Summary
       %th
@@ -121,8 +121,8 @@ Feature:
 
     - @events.each do |event|
       %tr
-        %td= event.starts_at
-        %td= event.ends_at
+        %td= event.dtstart
+        %td= event.dtend
         %td= event.rrule
         %td= event.summary
         %td= link_to 'Show', event
@@ -164,7 +164,7 @@ Feature:
       @event = Event.new
       if flash[:repeats]
         flash[:scheme] = flash[:repeats]
-        @event_template = Event.scheme(flash[:repeats]).call
+        @recurs_template = Event.scheme(flash[:repeats]).call
       end
 
       respond_to do |format|
@@ -182,10 +182,11 @@ Feature:
     # POST /events.xml
     def create
       unless flash[:repeats]
+        flash[:dtstart] = params[:event][:dtstart]
         flash[:repeats] = params[:event][:repeats].to_i
         redirect_to new_event_path
       else
-        #@event = Event.new(params[:event])
+        @event = Event.new(params[:event])
         Event.scheme(flash[:scheme]).call(:set => params[:event])
       end
     end

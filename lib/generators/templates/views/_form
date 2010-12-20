@@ -9,7 +9,7 @@
   .field
   .field
     = f.label :repeats
-    = f.select :repeats, Event.schemes
+    = f.select :repeats, Event.indexed_schemes
 
   - if flash[:interval]
     .field

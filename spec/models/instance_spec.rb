@@ -14,6 +14,8 @@ describe Event do
   it "should act as recurring" do
     @event.recurs
     @event.repeats
+    @event.dtstart
+    @event.dtend
   end
 
   it "should have the schemes" do
@@ -45,8 +47,8 @@ describe Event do
   end
 
   it "should add a non specific rule" do
-    @event.add_rule(:daily).should == ":FREQ=DAILY"
-    @event.recurs.should == ":FREQ=DAILY"
+    @event.add_rule(:daily).should == "FREQ=DAILY"
+    @event.recurs.should == "FREQ=DAILY"
   end
 
   it "should add an exrule" do

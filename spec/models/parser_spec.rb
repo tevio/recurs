@@ -25,7 +25,7 @@ describe Recurs::Parser do
   end
 
   it "should swicth off rule type" do
-    Recurs::Parser.rule(:daily).should == ":FREQ=DAILY"
+    Recurs::Parser.rule(:daily).should == "FREQ=DAILY"
   end
 
  it "should create a daily recurrence with a two day interval" do
@@ -108,5 +108,9 @@ describe Recurs::Parser do
     Recurs::Parser.rrule(:weekly, :count => 3, :by_day => ['fer', 0]).should == "RRULE:FREQ=WEEKLY;BYDAY=SU;COUNT=3"
     Recurs::Parser.rrule(:yearly, :by_month => :january).should == "RRULE:FREQ=YEARLY;BYMONTH=1"
  end  
-  
+
+  it "should have bare rulses ( nor rrule or exrule )" do
+        Recurs::Parser.rule(:yearly, :by_month => :january).should == "FREQ=YEARLY;BYMONTH=1"
+  end
+
 end

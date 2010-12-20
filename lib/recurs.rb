@@ -84,9 +84,9 @@ module Recurs
 
       def rule(repeats, args = {})
         @@rule = ""
-        @@rule = "RRULE" if (args[:rule] == 'r')
-        @@rule = "EXRULE" if (args[:rule] == 'e')
-        @@rule += ":FREQ=#{repeats.to_s.upcase}"
+        @@rule = "RRULE:" if (args[:rule] == 'r')
+        @@rule = "EXRULE:" if (args[:rule] == 'e')
+        @@rule += "FREQ=#{repeats.to_s.upcase}"
         interval(args)
         args.each { |ar|
           unless [:rule, :by_set_pos, :by_week_at, :count, :occurrences, :until, :ends_at, :repeats_every, :interval].include? ar[0]
@@ -211,7 +211,7 @@ module Recurs
     end
 
     module InstanceMethods
-      attr_accessor :repeats
+      attr_accessor :repeats, :dtstart, :dtend
       def initialize
         @rrules  ||= []
         @exrules ||= []

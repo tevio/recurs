@@ -2,8 +2,8 @@
 
 %table
   %tr
-    %th Starts on
-    %th Ends on date
+    %th Start date
+    %th End date
     %th Recurrence
     %th Summary
     %th
@@ -12,8 +12,8 @@
 
   - @<%= dname %>s.each do |<%= dname %>|
     %tr
-      %td= <%= dname %>.starts_at
-      %td= <%= dname %>.ends_at
+      %td= <%= dname %>.dtstart
+      %td= <%= dname %>.dtend
       %td= <%= dname %>.rrule
       %td= <%= dname %>.summary
       %td= link_to 'Show', <%= dname %>
