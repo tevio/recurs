@@ -1,3 +1,3 @@
 module Recurs
-  VERSION = "0.0.4.6"
+  VERSION = "0.0.4.7"
 end
